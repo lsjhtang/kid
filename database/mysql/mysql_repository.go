@@ -190,7 +190,10 @@ func (repo *Repository) Save(creator *creator.Creator) error {
 }
 
 func (repo *Repository) Update(updater *updater.Updater) error {
-	db := repo.getTx(updater.Tx).Scopes(Wheres(updater.Wheres.Wheres...))
+	var db = repo.getTx(updater.Tx)
+	if updater.Wheres != nil && len(updater.Wheres.Wheres) > 0 {
+		db = db.Scopes(Wheres(updater.Wheres.Wheres...))
+	}
 	if updater.Debug {
 		db.Debug()
 	}
@@ -208,7 +211,7 @@ func (repo *Repository) Update(updater *updater.Updater) error {
 			Updates(updater.Update).
 			Error
 	}
-	if updater.Fields != nil {
+	if updater.Fields != nil && updater.Model != nil {
 		return db.Model(updater.Model).
 			UpdateColumns(updater.Fields).
 			Error
