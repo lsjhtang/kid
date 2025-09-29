@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/leor-w/utils"
+	"github.com/lsjhtang/kid/utils"
 )
 
 // entity 实体, 用于存储实例的信息

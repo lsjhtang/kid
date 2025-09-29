@@ -6,9 +6,9 @@ import (
 
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
-	"github.com/leor-w/injector"
-	"github.com/leor-w/kid/config"
-	"github.com/leor-w/kid/utils"
+	"github.com/lsjhtang/kid/config"
+	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/utils"
 )
 
 type Controller struct {
@@ -41,7 +41,7 @@ func (ctrl *Controller) Init() error {
 
 func (ctrl *Controller) Provide(ctx context.Context) interface{} {
 	var confName string
-	name, ok := ctx.Value(injector.NameKey{}).(string)
+	name, ok := ctx.Value(container.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName = "." + name
 	}

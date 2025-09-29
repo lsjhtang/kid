@@ -10,10 +10,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/leor-w/injector"
-
-	"github.com/leor-w/kid/plugin"
-	"github.com/leor-w/kid/utils"
+	"github.com/lsjhtang/kid/plugin"
+	"github.com/lsjhtang/kid/utils"
 )
 
 var (
@@ -63,7 +61,7 @@ func (c *Container) initEntity(plug plugin.Plugin, opts ...Option) *entity {
 	for _, o := range opts {
 		o(e)
 	}
-	ctx := context.WithValue(context.Background(), injector.NameKey{}, e.alias)
+	ctx := context.WithValue(context.Background(), NameKey{}, e.alias)
 	provide := plug.Provide(ctx)
 	return e.init(provide)
 }

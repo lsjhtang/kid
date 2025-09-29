@@ -7,13 +7,13 @@ import (
 
 	"gorm.io/gorm/clause"
 
-	"github.com/leor-w/kid/database/repos"
-	"github.com/leor-w/kid/database/repos/creator"
-	"github.com/leor-w/kid/database/repos/deleter"
-	"github.com/leor-w/kid/database/repos/finder"
-	"github.com/leor-w/kid/database/repos/updater"
-	"github.com/leor-w/kid/logger"
-	"github.com/leor-w/kid/utils"
+	"github.com/lsjhtang/kid/database/repos"
+	"github.com/lsjhtang/kid/database/repos/creator"
+	"github.com/lsjhtang/kid/database/repos/deleter"
+	"github.com/lsjhtang/kid/database/repos/finder"
+	"github.com/lsjhtang/kid/database/repos/updater"
+	"github.com/lsjhtang/kid/logger"
+	"github.com/lsjhtang/kid/utils"
 	"gorm.io/gorm"
 )
 

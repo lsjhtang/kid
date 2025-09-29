@@ -10,12 +10,12 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/leor-w/kid/logger"
+	"github.com/lsjhtang/kid/logger"
 
-	"github.com/leor-w/injector"
+	"github.com/lsjhtang/kid/container"
 
-	"github.com/leor-w/kid/config"
-	"github.com/leor-w/kid/utils"
+	"github.com/lsjhtang/kid/config"
+	"github.com/lsjhtang/kid/utils"
 )
 
 type Ed25519 struct {
@@ -26,7 +26,7 @@ type Ed25519 struct {
 
 func (e *Ed25519) Provide(ctx context.Context) interface{} {
 	var confName string
-	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	confPrefix := fmt.Sprintf("crypt.ed25519%s", confName)

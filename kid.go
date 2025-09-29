@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/leor-w/kid/config"
-	"github.com/leor-w/kid/container"
-	"github.com/leor-w/kid/logger"
-	"github.com/leor-w/kid/middleware"
-	"github.com/leor-w/kid/plugin"
-	"github.com/leor-w/kid/plugin/logrus"
+	"github.com/lsjhtang/kid/config"
+	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/logger"
+	"github.com/lsjhtang/kid/middleware"
+	"github.com/lsjhtang/kid/plugin"
+	"github.com/lsjhtang/kid/plugin/logrus"
 )
 
 var (

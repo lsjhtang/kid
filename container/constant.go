@@ -13,6 +13,8 @@ const (
 	tagOpts  = "opts"  // 标签中的选项
 )
 
+type NameKey struct{}
+
 // TagOption 标签选项
 
 const (

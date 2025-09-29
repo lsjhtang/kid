@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/leor-w/injector"
+	"github.com/lsjhtang/kid/container"
 
 	"github.com/elastic/go-elasticsearch/v7"
 
-	"github.com/leor-w/kid/config"
-	"github.com/leor-w/kid/utils"
+	"github.com/lsjhtang/kid/config"
+	"github.com/lsjhtang/kid/utils"
 )
 
 type Elasticsearch struct {
@@ -19,7 +19,7 @@ type Elasticsearch struct {
 
 func (es *Elasticsearch) Provide(ctx context.Context) interface{} {
 	var confName string
-	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	confPrefix := fmt.Sprintf("elasticsearch%s", confName)
