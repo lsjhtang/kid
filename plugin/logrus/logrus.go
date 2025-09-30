@@ -8,7 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
 	logruscloudwatch "github.com/innix/logrus-cloudwatch"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 
 	"github.com/lsjhtang/kid/config"
 	"github.com/lsjhtang/kid/logger"
@@ -25,7 +25,7 @@ type logrusLogger struct {
 
 func (log *logrusLogger) Provide(ctx context.Context) interface{} {
 	var confName string
-	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	return Default(confName)

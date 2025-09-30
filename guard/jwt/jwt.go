@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/lsjhtang/kid/config"
@@ -21,7 +21,7 @@ type Jwt struct {
 
 func (g *Jwt) Provide(ctx context.Context) interface{} {
 	var confName string
-	name, ok := ctx.Value(container.NameKey{}).(string)
+	name, ok := ctx.Value(injector.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName += "." + name
 	}

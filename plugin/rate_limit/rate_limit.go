@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	redis2 "github.com/go-redis/redis/v8"
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 
 	"github.com/lsjhtang/kid/config"
 	"github.com/lsjhtang/kid/database/redis"
@@ -21,7 +21,7 @@ type Option func(*Options)
 
 func (r *RateLimit) Provide(ctx context.Context) any {
 	var confName string
-	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	confPrefix := fmt.Sprintf("rate_limit%s", confName)

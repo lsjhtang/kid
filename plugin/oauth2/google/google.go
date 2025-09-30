@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/lsjhtang/kid/container"
 	"github.com/lsjhtang/kid/database/redis"
+	"github.com/lsjhtang/kid/injector"
 	"github.com/lsjhtang/kid/logger"
 	"github.com/spf13/cast"
 	"golang.org/x/oauth2"
@@ -33,7 +33,7 @@ type OAuth struct {
 
 func (auth *OAuth) Provide(ctx context.Context) any {
 	var confName string
-	name, ok := ctx.Value(container.NameKey{}).(string)
+	name, ok := ctx.Value(injector.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName = "." + name
 	}

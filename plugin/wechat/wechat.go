@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 	"github.com/silenceper/wechat/v2"
 	"github.com/silenceper/wechat/v2/cache"
 	"github.com/silenceper/wechat/v2/miniprogram"
@@ -59,7 +59,7 @@ type Wechat struct {
 
 func (w *Wechat) Provide(ctx context.Context) interface{} {
 	var confName string
-	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	confPrefix := fmt.Sprintf("wechat%s", confName)

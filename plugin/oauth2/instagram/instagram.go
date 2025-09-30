@@ -14,8 +14,8 @@ import (
 	"golang.org/x/oauth2/instagram"
 
 	"github.com/lsjhtang/kid/config"
-	"github.com/lsjhtang/kid/container"
 	"github.com/lsjhtang/kid/database/redis"
+	"github.com/lsjhtang/kid/injector"
 	"github.com/lsjhtang/kid/logger"
 	"github.com/lsjhtang/kid/plugin/lock"
 	plugin "github.com/lsjhtang/kid/plugin/oauth2"
@@ -31,7 +31,7 @@ type OAuth struct {
 
 func (oauth *OAuth) Provide(ctx context.Context) any {
 	var confName string
-	name, ok := ctx.Value(container.NameKey{}).(string)
+	name, ok := ctx.Value(injector.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName = "." + name
 	}

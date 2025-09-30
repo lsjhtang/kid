@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 	"github.com/smartwalle/alipay/v3"
 
 	"github.com/lsjhtang/kid/config"
@@ -39,7 +39,7 @@ const (
 
 func (pay *Alipay) Provide(ctx context.Context) interface{} {
 	var confName string
-	name, ok := ctx.Value(container.NameKey{}).(string)
+	name, ok := ctx.Value(injector.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName = "." + name
 	}

@@ -6,7 +6,7 @@ import (
 	"image/color"
 	"strings"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 
 	"github.com/lsjhtang/kid/utils"
 
@@ -27,7 +27,7 @@ type Option func(*Options)
 
 func (c *Captcha) Provide(ctx context.Context) interface{} {
 	var confName string
-	if name, ok := ctx.Value(container.NameKey{}).(string); ok && len(name) > 0 {
+	if name, ok := ctx.Value(injector.NameKey{}).(string); ok && len(name) > 0 {
 		confName = "." + name
 	}
 	confPrefix := fmt.Sprintf("captcha%s", confName)

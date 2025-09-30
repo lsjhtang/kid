@@ -11,7 +11,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/lsjhtang/kid/container"
+	"github.com/lsjhtang/kid/injector"
 
 	"github.com/lsjhtang/kid/config"
 	"github.com/lsjhtang/kid/logger"
@@ -33,7 +33,7 @@ type Express struct {
 
 func (express *Express) Provide(ctx context.Context) interface{} {
 	var confName string
-	name, ok := ctx.Value(container.NameKey{}).(string)
+	name, ok := ctx.Value(injector.NameKey{}).(string)
 	if ok && len(name) > 0 {
 		confName = "." + name
 	}
